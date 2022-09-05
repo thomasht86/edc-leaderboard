@@ -1,0 +1,12 @@
+{
+  "uid": "38cb860c-e785-4cee-b429-fbfadeab18aa",
+  "name": "edc-hackathon",
+  "exclude": [
+    "venv",
+    ".venv",
+    "__pycache__",
+    ".databutton",
+    ".git",
+    "renovate.json"
+  ]
+}
