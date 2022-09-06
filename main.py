@@ -48,7 +48,10 @@ def leaderboard():
                         st.sidebar.balloons()
                         submit = False
                         uploaded_file = None
-        st.dataframe(df, width=1000) 
+                else:
+                    st.sidebar.error("Invalid submission. Make sure the dataframe is valid.")
+        st.dataframe(df, width=1000)
+        #db.streamlit.footer() 
                      
     st.sidebar.info(
             f"""
