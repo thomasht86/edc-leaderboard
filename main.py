@@ -42,17 +42,18 @@ def leaderboard():
                         new_row = pd.DataFrame(columns=columns, data=[[submitter, submission_name, datetime.now(), score]])
                         df = df.append(new_row, ignore_index=True)
                         df = df.sort_values(by="Score", ascending=True)
+                        df.reset_index(drop=True, inplace=True)
                         db.storage.dataframes.put(df, "leaderboard")
                         st.sidebar.success("Submission successful")
                         st.sidebar.balloons()
                         submit = False
                         uploaded_file = None
-        st.dataframe(df) 
+        st.dataframe(df, width=1000) 
                      
     st.sidebar.info(
             f"""
                 👆 Upload a .csv file to make your submission. 
-                Must be formatted like this: [sample_submission.csv](https://raw.githubusercontent.com/thomasht86/edc-leaderboard/master/data/edc_sample_sub.csv)
+                Must be formatted like this: [sample_submission.csv](https://docs.google.com/spreadsheets/d/1DRI23Ywh_jnjU22hOSXQ-fFY-WF0v6ngpIKHlM3cmzU/export?format=csv)
                 """
         )
     

@@ -1,8 +1,8 @@
 import numpy as np
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
 import pandas as pd 
 
-df_test = pd.read_csv("https://github.com/thomasht86/edc-leaderboard/raw/master/data/dummy.csv")
+df_test = pd.read_csv("https://docs.google.com/spreadsheets/d/19ToQ6RTxCW_6h4-UPVmaNYXoyuvRaWLXjJaVR8-jdMw/export?format=csv")
 
 def validate_df(df):
     # Check if dataframe is valid
@@ -11,5 +11,5 @@ def validate_df(df):
 
 def score_df(df):
     # Calculate nrmse of dataframe
-    score = mean_squared_error(df_test["Value"], df["Value"])
+    score = mean_absolute_error(df_test["Value"], df["Value"])
     return score
