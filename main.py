@@ -52,7 +52,7 @@ def leaderboard():
     st.sidebar.info(
             f"""
                 👆 Upload a .csv file to make your submission. 
-                Must be formatted like this: [sample_submission.csv](https://people.sc.fsu.edu/~jburkardt/data/csv/biostats.csv)
+                Must be formatted like this: [sample_submission.csv](https://raw.githubusercontent.com/thomasht86/edc-leaderboard/master/data/edc_sample_sub.csv)
                 """
         )
     
