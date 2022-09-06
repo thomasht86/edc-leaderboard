@@ -10,6 +10,6 @@ def validate_df(df):
     return is_valid
 
 def score_df(df):
-    # Calculate nrmse of dataframe
+    # Calculate mae of dataframe
     score = mean_absolute_error(df_test["Value"], df["Value"])
     return score
