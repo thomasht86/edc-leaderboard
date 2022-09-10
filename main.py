@@ -8,13 +8,17 @@ import numpy as np
 from evaluate import validate_df, score_df
 
 columns = ["Participant", "Submission name", "Timestamp", "Score"]
-participants = ["P1", "P2", "P3"]
 def get_df():
-    df = pd.DataFrame(columns=columns, data=[[p, " This is a description of the submission ", datetime.now(), 0] for p in participants])
+    df = pd.read_table("participants.txt", header=None, names=["Participant"])
+    df["Submission description"] = " This is a description of the submission "
+    df["Timestamp"] = datetime.now()
+    df["Score"] = 999999
+    #df = pd.DataFrame(columns=columns, data=[[p, " This is a description of the submission ", datetime.now(), 9999999] for p in participants])
     return df
 
 df = get_df()
 db.storage.dataframes.put(df, "leaderboard")
+participants = df["Participant"].unique()
 
 @db.apps.streamlit(route="/leaderboard", name="Leaderboard")
 def leaderboard():
@@ -51,7 +55,7 @@ def leaderboard():
                 else:
                     st.sidebar.error("Invalid submission. Make sure the dataframe is valid.")
         st.dataframe(df, width=1000)
-        #db.streamlit.footer() 
+        db.streamlit.footer() 
                      
     st.sidebar.info(
             f"""

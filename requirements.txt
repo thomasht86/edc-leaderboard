@@ -1,2 +1,2 @@
-databutton==0.22.2
+databutton==0.24.3
 scikit-learn==1.1.2
